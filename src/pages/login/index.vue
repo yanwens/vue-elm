@@ -18,7 +18,7 @@
                       :disabled="!isRightPhone || countDown>0"
                       @click.prevent="sendCode"
               >
-                {{countDown>0 && isRightPhone ?`等待(${countDown}s)`: '获取验证码'}}
+                {{countDown>0 && isRightPhone ?`等待(${countDown}s)`:'获取验证码'}}
               </button>
             </section>
             <section class="login_verification">
