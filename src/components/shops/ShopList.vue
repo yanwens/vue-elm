@@ -1,7 +1,7 @@
 <template>
   <div class="shop_container">
     <ul class="shop_list" v-if="shops.length">
-      <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index">
+      <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index" @click="$router.push('/shop')">
         <a>
           <div class="shop_left">
             <img class="shop_img" :src="imageBaseUrl + shop.image_path">
@@ -62,7 +62,7 @@
 <script>
   import {mapState} from 'vuex';
 
-  import Star from '../star';
+  import Star from '../star/Start';
 
   export default {
     data () {

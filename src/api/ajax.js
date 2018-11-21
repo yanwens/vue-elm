@@ -17,10 +17,11 @@ export default function ajax (url, data={}, method='GET') {
       }
       promise = axios.get(url+queryString);
     }else {
-      promise = axios.post(url,queryString,{
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }});
+      // promise = axios.post(url,queryString,{
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   }});
+      promise = axios.post(url, data);
     }
     promise
       .then(response => {

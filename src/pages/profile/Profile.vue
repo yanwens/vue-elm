@@ -1,18 +1,18 @@
 <template>
   <section class="profile">
     <TopHeader title="个人中心"/>
-    <section class="profile-number" @click="$router.push('/login')">
+    <section class="profile-number" @click="$router.push(user._id ?'userInfo' : '/login')">
       <a href="javascript:" class="profile-link">
         <div class="profile_image">
           <i class="iconfont icon-person"></i>
         </div>
         <div class="user-info">
-          <p class="user-info-top">登录/注册</p>
+          <p class="user-info-top">{{user._id ? user.name||user.phone : '登录/注册'}}</p>
           <p>
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-            <span class="icon-mobile-number">暂无绑定手机号</span>
+            <span class="icon-mobile-number">{{user.phone? user.phone: '暂无绑定手机号'}}</span>
           </p>
         </div>
         <span class="arrow">
@@ -87,15 +87,30 @@
               </span>
         </div>
       </a>
+      <mt-button type="danger" style="width: 100%" @click="logout" v-show="user._id">退出登录</mt-button>
     </section>
   </section>
 </template>
 
 <script>
-  import TopHeader from '../../components/top-header';
+  import {mapState} from 'vuex';
+  import {MessageBox} from 'mint-ui';
+
   export default {
-    components: {
-      TopHeader
+    computed: {
+      ...mapState(['user'])
+    },
+    methods: {
+      logout () {
+        MessageBox.confirm('确定退出当前账号吗?')
+          .then(
+            action => {
+              this.$store.dispatch('logoutUser');
+            },
+            // action => {},   取消
+            );
+
+      }
     }
   }
 </script>

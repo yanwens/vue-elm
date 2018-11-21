@@ -33,7 +33,7 @@
         <i class="iconfont icon-xuanxiang"></i>
         <span class="shop_header_title">附近商家</span>
       </div>
-      <ShopList/>
+      <ShopList />
     </div>
   </section>
 </template>
@@ -42,8 +42,7 @@
   import Swiper from 'swiper';
   import 'swiper/dist/css/swiper.min.css'
 
-  import ShopList from '../../components/shops';
-  import TopHeader from '../../components/top-header';
+  import ShopList from '../../components/shops/ShopList.vue';
 
   export default {
     computed:{
@@ -85,12 +84,11 @@
       }
     },
     mounted () {
-      this.$store.dispatch('getAddress');
+
       this.$store.dispatch('getFoodCategory');
     },
     components: {
       ShopList,
-      TopHeader
     }
   }
 </script>
