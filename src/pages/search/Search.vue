@@ -9,10 +9,8 @@
 </template>
 
 <script>
-  import TopHeader from '../../components/top-header';
   export default {
     components: {
-      TopHeader
     }
   }
 </script>
