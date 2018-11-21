@@ -65,10 +65,11 @@ export default {
       commit(RECEIVE_USER, {user:{}})
     }
   },
-  async shopGoods ({commit}) {
+  async shopGoods ({commit},cb) {
     //直接成功
     const result = await getShopGoods();
     commit(RECEIVE_GOODS,{goods: result.data});
+    typeof cb ==='function' && cb();
   },
   async shopRatings ({commit}) {
     const result = await getShopRatings();
