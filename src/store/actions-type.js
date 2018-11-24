@@ -5,3 +5,6 @@ export const RECEIVE_USER = 'receive_user';
 export const RECEIVE_GOODS = 'receive_goods';
 export const RECEIVE_INFO = 'receive_info';
 export const RECEIVE_RATINGS = 'receive_ratings';
+export const INCREASE_FOOD_COUNT = 'increase_food_count';
+export const DEINCREASE_FOOD_COUNT = 'deincrease_food_count';
+export const CLEAR_CART = 'clear_cart';

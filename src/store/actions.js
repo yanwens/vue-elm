@@ -14,7 +14,10 @@ import {RECEIVE_ADDRESS,
   RECEIVE_USER,
   RECEIVE_GOODS,
   RECEIVE_INFO,
-  RECEIVE_RATINGS} from './actions-type';
+  RECEIVE_RATINGS,
+  INCREASE_FOOD_COUNT,
+  DEINCREASE_FOOD_COUNT,
+  CLEAR_CART} from './actions-type';
 
 export default {
 
@@ -71,13 +74,26 @@ export default {
     commit(RECEIVE_GOODS,{goods: result.data});
     typeof cb ==='function' && cb();
   },
-  async shopRatings ({commit}) {
+  async shopRatings ({commit}, cb) {
     const result = await getShopRatings();
     commit(RECEIVE_RATINGS,{ratings: result.data});
+    typeof cb ==='function' && cb();
   },
   async shopInfo ({commit}) {
     const result = await getShopInfo();
     commit(RECEIVE_INFO,{info: result.data});
   },
+  updateFoodsCount ({commit}, {food, isIncrease}) {
+    if (isIncrease) {
+      commit(INCREASE_FOOD_COUNT, {food});
+    }else{
+      commit(DEINCREASE_FOOD_COUNT,{food});
+    }
+  },
+  clearCart ({commit}) {
+
+    commit(CLEAR_CART);
+  }
+
 
 }
